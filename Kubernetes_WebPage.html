@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>kubernetes</title>
+</head>
+<link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+    /* CSS Reset */
+    body {
+        font-family: serif;
+        color: rgb(143, 143, 148);
+        margin: 0px;
+        padding: 0px;
+        background:rgb(5, 97, 97);
+        /* font-size: 15px; */
+    }
+
+    .left {
+        display: inline-block;
+        /* border: 2px solid red; */
+        position: absolute;
+        left: 30px;
+        top: 20px;
+        color: white;
+    }
+
+    .left div {
+        line-height: 19px;
+        font-size: 26px;
+        text-align: center;
+    } 
+    .left img {
+        width: 136px;
+    }
+    .mid {
+        display: block;
+        width: 36%;
+        margin: 29px auto;
+        /* border: 2px solid green; */
+    }
+    .btn {
+        font-family: 'Baloo Bhai', cursive;
+        margin: 0px 9px;
+        background-color: black;
+        color: white;
+        padding: 4px 14px;
+        border: 2px solid grey;
+        border-radius: 10px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: rgb(124, 0, 0);
+    }
+
+    .container {
+        margin: 106px 80px;
+        padding: 55px;
+        width: 33%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .form-group input {
+        font-family: 'Baloo Bhai', cursive;
+        text-align: center;
+        display: block;
+        width: 508px;
+        padding: 1px;
+        border: 2px solid black;
+        margin: 11px auto;
+        font-size: 25px;
+        border-radius: 8px;
+    }
+
+    .container h1 {
+        text-align: center;
+        color: white;
+    }
+
+    .container button {
+        display: block;
+        width: 40%;
+        margin: 20px auto;
+        color: white;
+    }
+</style>
+
+<body>
+    <header class="header">
+        <!-- Left box for logo -->
+        <div class="left">
+            <img src="logokube.png" alt="">
+            <div>KUBERNETES</div>
+        </div>
+    </header>
+    <div class="container">
+        <h1>KUBERNETES</h1>
+            <div class="form-group">
+                <input type="text" name="" placeholder="Enter your Command">
+            </div>
+            <script>
+                function run( p2 , p3)
+              {
+                    var xhr = new XMLHttpRequest();
+                    var i = document.getElementById("n1").value.toLowerCase();
+                    xhr.open("GET", `http://192.168.43.197/cgi-bin/9ser.py?x=${i}&n=${p2}&a=${p3}`, true);
+                    xhr.send();
+                    xhr.onload = function()
+                     {
+                        var output = xhr.responseText;
+                        document.getElementById("p1").innerHTML = output;
+                     }
+                };
+        
+        function launchPodDep() {
+                var image = prompt('Enter image name:');
+                var name = prompt('Enter pod/Deployment name :');
+                run(name , image);
+            };
+        function deletePodDep() {
+            var delp = prompt('Enter Deployment/Pod Name you want to delete');
+            run(delp);
+        };
+        function showpods(){
+                run();
+        };
+        function scale(){
+                var name = prompt("Enter Your Deployment name : ");
+                var count = prompt("Enter no. copies you want : ");
+                run(name,count);
+        };
+        
+        function exposePodDep(){
+                var name = prompt("Enter Your Deployment/Pod name : ");
+                var port = prompt("Enter the Port No. For Exposing Deployment : ");
+                run(name , port);
+        };
+        
+        function deleteAll(){
+                run();
+        }
+        
+        function ask() {
+            var str = document.getElementById('n1').value
+            var lowercase = str.toLowerCase();
+            var arr = lowercase.split(" ");
+        
+        if (((arr.indexOf("deploy") > -1) || (arr.indexOf("deployment") > -1) || (arr.indexOf("pod") > -1) || (arr.indexOf("container") > -1) ) && ((arr.indexOf("launch") > -1) || (arr.indexOf("create") > -1))) {
+              alert("pod")
+              launchPodDep();
+            }
+        
+        else if (((arr.indexOf("delete") > -1) || (arr.indexOf("remove") > -1) || (arr.indexOf("destroy") > -1)) && ((arr.indexOf("pod") > -1) || (arr.indexOf("container") > -1) ||(arr.indexOf("deploy") > -1) || (arr.indexOf("deployment") > -1) || (arr.indexOf("rc") > -1) || (arr.indexOf("svc") > -1) || (arr.indexOf("service") > -1))) {
+                deletePodDep();
+            }
+        
+        else if (((arr.indexOf("show") > -1) || (arr.indexOf("list") > -1) || (arr.indexOf("display") > -1)) && ((arr.indexOf("pod") > -1) || (arr.indexOf("pods") > -1) || (arr.indexOf("container") > -1) ||(arr.indexOf("deploy") > -1) || (arr.indexOf("deployment") > -1) || (arr.indexOf("service") > -1) || (arr.indexOf("svc") > -1) || (arr.indexOf("rc") > -1) || (arr.indexOf("nodes") > -1))) {
+                showpods();
+        }
+        
+        else if (((arr.indexOf("create") > -1) || (arr.indexOf("scale") > -1) || (arr.indexOf("replicate") > -1)) && ((arr.indexOf("deploy") > -1) || (arr.indexOf("deployment") > -1))) {
+                scale();
+            }
+        
+        else if (((arr.indexOf("expose") > -1) || (arr.indexOf("create") > -1) || (arr.indexOf("disclose") > -1)) && ((arr.indexOf("loadbalancer") > -1) || (arr.indexOf("deploy") > -1) || (arr.indexOf("deployment") > -1) || (arr.indexOf("service") > -1) || (arr.indexOf("pod") > -1) || (arr.indexOf("pods") > -1))) {
+                exposePodDep();
+            }
+        
+        else if (((arr.indexOf("delete") > -1) || (arr.indexOf("destroy") > -1) || (arr.indexOf("clean") > -1)) && ((arr.indexOf("all") > -1) || (arr.indexOf("environment") > -1) || (arr.indexOf("infrastructure") > -1))) {
+                deleteAll();
+            }
+        
+        
+        
+        else {
+                alert("The syntax is wrong...try again!!")
+            }
+        };
+        
+        </script>
+            <button class="btn">Run Command</button>
+            <output-box></output-box>
+        </form>
+    </div>
+    <script>
+        //Get the button
+        var mybutton = document.getElementById("myBtn");
+        
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+        
+        function scrollFunction() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+          } else {
+            mybutton.style.display = "none";
+          }
+        }
+        
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
+        </script>
+</body>
+
+</html>
