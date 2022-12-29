@@ -4,12 +4,12 @@ import cgi
 import subprocess as sp
 
 print("content-type: text/html")
-print("Access-Control-Allow-Origin:*")
+print("Access-Control-Allow-Origin:*") #http header,allow incoming request
 print()
 
 cmd = cgi.FieldStorage().getvalue("x")
-n = cgi.FieldStorage().getvalue("n") #n will mostly have the name
-a = cgi.FieldStorage().getvalue("a") #a will take extra arguments 
+n = cgi.FieldStorage().getvalue("n") #extra argument
+a = cgi.FieldStorage().getvalue("a")  
 
 
 # get pods deploy svc rc
