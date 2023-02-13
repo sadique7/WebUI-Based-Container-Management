@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 import cgi
-import subprocess as sp
+import subprocess as sp #is used to print linux output same as it is or run new process for application
 
 print("content-type: text/html")
 print("Access-Control-Allow-Origin:*") #http header,allow incoming request
