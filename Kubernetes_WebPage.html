@@ -104,13 +104,13 @@
             <script>
                 function run( p2 , p3)
               {
-                    var xhr = new XMLHttpRequest();
+                    var xhr = new XMLHttpRequest(); // XMLHttpRequest() is a object in js which is used to request to data from the server using http protocol
                     var i = document.getElementById("n1").value.toLowerCase();
-                    xhr.open("GET", `http://192.168.43.197/cgi-bin/9ser.py?x=${i}&n=${p2}&a=${p3}`, true);
-                    xhr.send();
-                    xhr.onload = function()
+                    xhr.open("GET", `http://192.168.43.197/cgi-bin/9ser.py?x=${i}&n=${p2}&a=${p3}`, true);//client page request to open the server page and this porcess is known as GET request
+                    xhr.send(); // to send the request to the server
+                    xhr.onload = function() // this event check whether output comes or not
                      {
-                        var output = xhr.responseText;
+                        var output = xhr.responseText;// is used to store the output from this 
                         document.getElementById("p1").innerHTML = output;
                      }
                 };
