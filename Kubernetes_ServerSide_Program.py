@@ -7,7 +7,7 @@ print("content-type: text/html")
 print("Access-Control-Allow-Origin:*") #http header,allow incoming request
 print()
 
-cmd = cgi.FieldStorage().getvalue("x")
+cmd = cgi.FieldStorage().getvalue("x") #whatever the fieldvalue or input coming from clientside store in a variable
 n = cgi.FieldStorage().getvalue("n") #extra argument
 a = cgi.FieldStorage().getvalue("a")  
 
